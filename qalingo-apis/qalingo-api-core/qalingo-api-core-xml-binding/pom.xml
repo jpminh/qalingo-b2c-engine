@@ -24,23 +24,20 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
 				<configuration>
+					<args>
+						<arg>-extension</arg>
+					</args>
 					<schemaDirectory>src/main/resources/xsd</schemaDirectory>
+					<bindingDirectory>src/main/resources/xjb</bindingDirectory>
+					<cleanPackageDirectories>true</cleanPackageDirectories>				
 				</configuration>
 				<executions>
 					<execution>
-						<id>commons-jaxb</id>
-						<configuration>
-							<arguments>-extension</arguments>
-							<schemaFiles>store.xsd,customer.xsd</schemaFiles>
-							<staleFile>target/generated-sources/jaxb/.staleFlag.</staleFile>
-							<bindingDirectory>src/main/resources/xjb</bindingDirectory>
-							<clearOutputDir>false</clearOutputDir>
-						</configuration>
 						<goals>
-							<goal>xjc</goal>
+							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>
